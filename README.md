@@ -1,15 +1,14 @@
 
-# CodeMasters
+# CodeX
 
-CodeMasters is an online judge platform where users can sign in, sign up, and solve coding problems. This repository contains both the frontend and backend code for the project.
+CodeX is an online judge platform where users can sign in, sign up, and solve coding problems. This repository contains both the frontend and backend code for the project.
 
 
 ## Table of Contents
 
-- [CodeMasters](#codemasters)
+- [CodeX](#codex)
   - [Table of Contents](#table-of-contents)
   - [Technologies Used](#technologies-used)
-  - [Demo](#demo)
   - [Installation](#installation)
     - [Frontend Setup](#frontend-setup)
     - [Backend Setup](#backend-setup)
@@ -29,17 +28,15 @@ CodeMasters is an online judge platform where users can sign in, sign up, and so
 
 **Authentication:**
 - Firebase
-## Demo
 
-Check out the demo video [here](https://www.loom.com/share/38949be44e31430ebee48f51f8fc2e92)
 ## Installation
 
 ### Frontend Setup
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Balusu-Revanth/Online-Judge.git
-    cd codemasters/online-judge-frontend
+    git clone https://github.com/Balusu-Revanth/CodeX.git
+    cd CodeX/online-judge-frontend
     ```
 
 2. Install dependencies:
