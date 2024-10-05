@@ -1,0 +1,59 @@
+*********FRONTEND**********
+6 routes - signup, signin, home, add-problem, /problems/:id, / 
+
+/signup - 
+uses firebase to provide auth facilities.
+Can signup using google or email.
+To create user with email and password - We send email and password to firebase. It returns us with an idToken. We register the user with his name, email and idToken on mongoDB.
+To create user with Google - After signing up, we get idToken from firebase. We check if idToken already exists on mongoDB, if yes, then the user ahs to signin, else we register the user with name, email and idToken on mongoDB.
+
+/signin - 
+uses firebase to provide auth facilities.
+Can signup using google or email.
+To signin using email and password - We send email and password to firebase. It sends us back an idToken of that user if registered, else error. We check if that idToken exists, if yes, we log him in, else generate error.
+To signin with Google - Same as above.
+
+/home - 
+We fetch all the problems, solved problems. We can press a button to solve the problem. Pressing on it will take us to  /problems/:id.
+We need to be an admin to delete problem. If we are admin, we would be able to see delete option. After pressing it, we would send a delete request to /problems/delete/${id}.
+	Navbar in Home-
+	Signout - To signout the user.
+	Delete account - We ask for user password. We verify it. If correct, we send a delete request to /user/delete-user to delete the user.
+
+/add-problem - We run a put request to add the problem in the database if he an admin. Route to /problems. The problem needs a description, difficulty, test cases.
+
+/problems/:id - 
+We try to fetch the problem from the route /problems/${id}.
+On submitting the code, we make a post request to /problems/submit/${id}. It gives us the output on which test case the code failed or it gives a ran successfully message.
+On running the code, we make a post request to /problems/run. body is language, code, input. We get the output.
+
+The routes which are protected, on visiting them, we check if the user is there, else return him back to signin.
+The routes which are admin protected, on visiting them, we check if the user is admin, else return him back to signin.
+
+
+********BACKEND*********
+/auth - auth routes
+/problems - problem routes
+/user - 
+
+middleware - Takes the idToken from authorization header send from frontend by firebase. Decodes it and gets user.
+generateCodeFile(lang, code) - Creates a file which contains the code with the extension of lang. Returns the file path.
+generateInputFile - Creates a file containing inputs.
+runCppCode - We create output file. We create a child process though which we will compile and run the code. Store output in output file.
+
+/auth - 
+/signup - We add the new user from the details we get from idToken and post request body( first name, last name). 
+/signin - We find the user using uid decoded from idToken. We send the user back.
+
+/problems - 
+/add - We get all the needed info from the frontend. We add the new problem as a row in Problem table.
+/all - We return all problems as an array.
+/:problem_id - We return problem by problem id.
+/delete/:problem_id - We delete problem by id.
+/submit/:problem_id - We try to find the problem by problem_id. Then generateCodeFile(lang, code) is used to generate code file. For each test case in the problem, we runCppCode(codepath, inputpath). We return output, delete all files.
+
+
+/user - 
+/get-user - Get user by uid.
+/solved-problems - Gets all the problem solved by the user.
+/delete-user - Deletes user. (-------------> How do you delete user in firebase?)
