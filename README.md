@@ -35,7 +35,7 @@ CodeX is an online judge platform where users can sign in, sign up, and solve co
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/Balusu-Revanth/CodeX.git
+    git clone https://github.com/Unknown-Cypher/CodeX.git
     cd CodeX/online-judge-frontend
     ```
 
