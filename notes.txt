@@ -1,4 +1,4 @@
-*********FRONTEND**********
+*********FRONTEND********** (Hosted on Vercel)
 6 routes - signup, signin, home, add-problem, /problems/:id, / 
 
 /signup - 
@@ -31,7 +31,7 @@ The routes which are protected, on visiting them, we check if the user is there,
 The routes which are admin protected, on visiting them, we check if the user is admin, else return him back to signin.
 
 
-********BACKEND*********
+********BACKEND********* (Hosted on Amazon EC2)
 /auth - auth routes
 /problems - problem routes
 /user - 
